@@ -1,6 +1,6 @@
 # Wavelength 🎵
 
-A multi-model music genre classifier trained on 114,000+ Spotify tracks across 10 genres. Built as a final project for DS 4400 (Machine Learning and Data Intelligence) at Northeastern University.
+A multi-model music genre classifier trained on 114,000+ Spotify tracks across 10 genres. Built as a final project for DS 4400
 
 ## Overview
 
@@ -14,8 +14,8 @@ Wavelength explores whether audio-based features like tempo, energy, and acousti
 
 - **Source:** [Kaggle Spotify Tracks Dataset](https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset)
 - **Size:** ~114,000 tracks
-- **Genres (10):** Electronic, Anime, Jazz, Alternative, Country, Rap, R&B, Soul, Classical, Pop
-- **Features:** Tempo, energy, danceability, acousticness, instrumentalness, valence, loudness, speechiness, and more
+- **Genres (10):** acoustic, afrobeat, alt-rock, ambient, cantopop, tango, chicago-house, forro, bluegrass, study
+- **Features:** Tempo, energy, danceability, acousticness, instrumentalness, valence, speechiness, and more
 
 ---
 
@@ -24,6 +24,7 @@ Wavelength explores whether audio-based features like tempo, energy, and acousti
 ### Preprocessing (Elyssa)
 - Removed nulls and duplicates
 - Normalized continuous features
+- Feature engineering
 - Applied PCA for dimensionality reduction (6 components, ~90% variance retained)
 
 ### Models
@@ -35,7 +36,7 @@ Wavelength explores whether audio-based features like tempo, energy, and acousti
 | Logistic Regression | ~65% | Suhana |
 | Random Forest | ~70% | Suhana |
 
-**Best model:** Random Forest (~70% accuracy on a 10-class task)
+**Best model:** Random Forest
 
 #### k-NN config
 - k = 24, Manhattan distance, distance-weighted voting
@@ -47,12 +48,12 @@ Wavelength explores whether audio-based features like tempo, energy, and acousti
 
 ## Results
 
-~70% accuracy on a 10-genre classification task is competitive given the degree of label overlap in genres like R&B, Soul, and Pop. Confusion matrices show the classifier performs strongest on genres with distinct audio signatures (Classical, Electronic) and weakest on overlapping ones (R&B vs. Soul).
+Spotify audio features can classify music genres with moderate success, though genre overlap makes the task inherently challenging. Random Forest performed best (70.77%), followed by Logistic Regression (60.91%), Decision Tree (59.21%), and k-NN (55.06%). Tree-based models outperformed linear and distance-based approaches, likely due to their ability to capture non-linear patterns in audio features. Future work could incorporate lyrics, artist metadata, or deep learning audio embeddings to improve separation on the hardest genres.
 
 Evaluation includes:
 - Confusion matrices per model
-- ROC curves (one-vs-rest)
-- Cross-validation (5-fold) to validate generalization
+- ROC curves 
+- Cross-validation
 
 ---
 
